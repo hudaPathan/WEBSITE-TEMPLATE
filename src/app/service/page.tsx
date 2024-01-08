@@ -13,7 +13,7 @@ const page = () => {
 <Service
 path="/asset/img/service1.jpeg"
 title="By Our Makeover Stylist"
-text="Your hair tells a story; make it a masterpiece"
+text="Makeup should never be used to hide yourself. It should be used to enhance your natural beauty"
 />
 <Service
 path="/asset/img/service2.jpeg"
@@ -22,25 +22,25 @@ text="Your hair tells a story; make it a masterpiece"
 
 />
 <Service
-path="/asset/img/service1.jpeg"
-title="By Our Hair Couture Stylist"
-text="Your hair tells a story; make it a masterpiece"
+path="/asset/img/service3.jpeg"
+title="By Our Skin Care Speacialist"
+text="Skincare is like dieting. You have to invest time and effort. There is no instant miracle cure."
 
 
 />
 
 <Service
-path="/asset/img/service1.jpeg"
-title="By Our Hair Couture Stylist"
-text="Your hair tells a story; make it a masterpiece"
+path="/asset/img/service4.jpeg"
+title="In our wellness center"
+text="Relax, renew, rejuvenate!! the three Rs of a wonderful experience"
 
 
 />
 
 <Service
-path="/asset/img/service1.jpeg"
-title="By Our Hair Couture Stylist"
-text="Your hair tells a story; make it a masterpiece"
+path="/asset/img/service5.png"
+title="By Our Nail Artists"
+text="Why blend in when your nails can stand out?"
 
 
 />

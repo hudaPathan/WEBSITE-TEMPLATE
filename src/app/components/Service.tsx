@@ -16,7 +16,7 @@ export const Service = ({path,text,title}:ServiceProps) => {
     <h4 className="mt-0 font-body text-lg font-normal text-blue-dark dark:text-blue-dark sm:text-xl"> {text}</h4>
     <span className="block pt-2 font-body text-sm font-light text-blue-dark underline"> {title}</span>
     <div className="mt-8 mb-0 border-tertiary text-center ">
-        <Image className="mt-3 mb-3 w-fit" src={path} width={500} height={500} alt=""/>
+       <Image className="mt-3 mb-3 w-fit" src={path} width={500} height={500} alt=""/>
     <Button 
     title="Book Now"
     />
