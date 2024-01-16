@@ -1,71 +1,101 @@
+"use client"
+
 import React from 'react'
 import GetStarted from './GetStarted'
 import Image from 'next/image'
 import Navbar from './Navbar'
 import Link from 'next/link'
 import Button from "./Button"
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
+import 'react-clock/dist/Clock.css';
+import { useState } from 'react';
+
+type ValuePiece = Date | null;
+type Value = ValuePiece | [ValuePiece, ValuePiece];
+type HeroProps={
+  path:string
+  height:number
+  isVisible:boolean
+  title:string
+  description?:string
+  
+}
 
 
-const Hero = () => {
+
+const Hero = ({path,height, isVisible, title, description}: HeroProps) => {
+ 
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const toggleDialog = () => {
+    setIsDialogOpen(!isDialogOpen);
+  };
+  const [value, setValue] = useState<Value>(new Date());
     const bg_discount_gradient = 'bg-gradient-to-tr from-[#94618e] to-[#f4decb]'
     const text_gradient = 'bg-gradient-to-br from-[#f4decb] via-[#49274a]to-[#f4decb] text-transparent bg-clip-text';
   
   return (
-  <div className=' bg-cover bg-no-repeat '
-  style={{backgroundImage: "url(/asset/img/hero.jpg"}} >
-
-    <section id="home" className={`flex md:flex-row flex-col sm:py-16 py-6 bg-no-repeat bg-cover`}>
-   
-    <div className="flex-1 flex justify-center  items-start flex-col xl:px-4 sm:px-16 px-6 ">
-      {/* <div className={`flex flex-row items-center py-[6px] px-4 ${bg_discount_gradient} rounded-[10px] mb-2` }>
-       <Image src="/asset/img/logo-apple.svg" width={32} height={32} alt="discount"></Image>
-        <p className="font-poppins font-normal text-dimWhite text-[18px] leading-[30.8px] ml-2">
-          <span className="text-white">20%</span> Discount For{" "}
-          <span className="text-white">1 Month</span> Account
-        </p>
-      </div> */}
-
-      <div className="flex flex-row justify-between items-center w-full">
-        
-      <h1 className={`font-poppins font-semibold ss:text-[68px] text-[52px] ss:leading-[100.8px] leading-[75px] w-full ${text_gradient} `}>Fanash</h1>
-        <div className="ss:flex hidden md:mr-4 mr-0">
-          {/* <GetStarted /> */}
-        </div>
-      </div>
-
-      <h1 className=" font-semibold ss:text-[68px] text-[52px] text-white ss:leading-[100.8px] leading-[75px] w-full">
-        Beauty
-      </h1>
-      <p className="text-white font-poppins font-normal text-dimWhite text-[18px] leading-[30.8px] max-w-[470px] mt-5">
-        Our team of experts uses a methodology to identify the credit cards
-        most likely to fit your needs. We examine annual percentage rates,
-        annual fees.
-      </p>
+  <section className=' bg-cover bg-no-repeat w-full'
+  style={{backgroundImage:  `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8))  ,url(${path})`, height:height}} 
+  >
+    <div>
+    <Navbar/>
 
     </div>
 
+    <div id="home" className={`flex md:flex-row flex-col sm:py-16 py-6 bg-no-repeat bg-cover`}>
+   
+    <div className="flex-1 flex justify-center  items-start flex-col xl:px-4 sm:px-16  ">
+    
+      <div className="flex flex-col justify-between items-center w-full relative mt-20">
+        
+      <h1 className={`font-mono ss:text-[68px] text-[52px] ss:leading-[100.8px] leading-[75px] w-full text-center text-white `}>{title}</h1>
+      <p className="text-white font-poppins text-center font-normal text-dimWhite text-[18px] leading-[30.8px] max-w-[600px] mt-5">
+       {description}
+      </p>
+      </div>
+      <div className="line-container w-full mt-5" style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
+      <div className="line bg-tertiary" style={{height:2, width:'25%'}}>
 
-    <div className="ss:hidden flex justify-center items-center px-2">
-    <div className="flex gap-3">
-            <Link href='/Datepicker'>
+      </div>
+    </div>
+    
+  
+      <div className="ss:hidden flex justify-center text-center w-full mt-10 px-2">
+        {isVisible && (
+    <div className="flex gap-3 items-center">
             <div className="hidden group-hover:block">
+            <Link href='\booking'>
+
             <Button 
                 title="Book Your Slot"
                 icon="/asset/img/calendar-clicked.png"
                 />
+                </Link>
+                 
             </div>
             <div className="block group-hover:hidden">
+              <Link href='\booking'>
             <Button 
                 title="Book Your Slot"
-                icon="/asset/img/calendar.png"
-                />
+                icon="/asset/img/calendar.png"/>
+       </Link>
+           
             </div>
                 
-                      </Link>
     </div>
+    )}
     </div>
-  </section> 
-  </div> )
+
+    
+    
+
+    </div>
+
+
+   
+  </div> 
+  </section> )
 }
 
 export default Hero

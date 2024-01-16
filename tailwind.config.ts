@@ -5,6 +5,8 @@ const config: Config = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./node_modules/tw-elements-react/dist/js/**/*.js"
+
   ],
   theme: {
     extend: {
@@ -14,24 +16,24 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       textColor: {
-        'tertiary':'#94618e',
-        'secondary':'#49274a',
-        'primary':'#f4decb',
-        'quaternary': '#f8eee7'
+        'tertiary':'#BFA75D',
+        'secondary':'#606060',
+        'primary':'#C9C9C9',
+        'quaternary': '#222222'
 
       },
       borderColor:{
-        'tertiary':'#94618e',
-        'secondary':'#49274a',
-        'primary':'#f4decb',
-        'quaternary': '#f8eee7'
+        'tertiary':'#BFA75D',
+        'secondary':'#606060',
+        'primary':'#C9C9C9',
+        'quaternary': '#222222'
 
       },
       backgroundColor:{
-        'tertiary':'#94618e',
-        'secondary':'#49274a',
-        'primary':'#f4decb',
-        'quaternary': '#f8eee7'
+        'tertiary':'#BFA75D',
+        'secondary':'#606060',
+        'primary':'#C9C9C9',
+        'quaternary': '#222222'
       }
 
       

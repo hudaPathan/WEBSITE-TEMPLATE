@@ -4,6 +4,8 @@ import Image from "next/image"
 import { NAV_LINKS } from "../constants"
 import Button from "./Button"
 import React, { useState } from 'react';
+import { IoIosMenu } from "react-icons/io";
+
 
 
 const Navbar = () => {
@@ -27,7 +29,7 @@ const Navbar = () => {
     );
   };
   return (
-    <nav className=" flexBetween max-container pt-4   padding-container relative z-30 bg-quaternary">
+    <nav className=" flexBetween max-container pt-4   padding-container relative z-30 bg-transparent">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-2">
         <div className="relative flex h-16 items-center justify-between">
           {/* <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -42,12 +44,14 @@ const Navbar = () => {
           </svg>
       </button>
         </div> */}
-          <Link href={"/"}>
-            <Image src="/asset/img/fanash.png" width={74} height={29} alt="fanash"></Image>
+          <Link className="flex mt-4" href={"/"}>
+            <Image src="/asset/img/fanash.png" width={100} height={100} alt="fanash"></Image> 
+            <span className="text-white mt-4 p-4 flex flex-col"> Fanash
+            <span>Beauty</span> </span>
           </Link>
           <ul className="hidden h-full gap-8 lg:flex items-ri py-3">
             {NAV_LINKS.map((link) => (
-              <Link className=" hover:bg-tertiary hover:text-primary rounded-md px-3 py-2 text-sm font-medium regular-16 text-tertiary flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold"
+              <Link className=" hover:bg-tertiary hover:text-primary rounded-md px-3 py-2 text-sm font-medium regular-16 text-white flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold"
                 href={link.href} key={link.key}>{link.label} </Link>
             )
 
@@ -55,17 +59,19 @@ const Navbar = () => {
           </ul>
 
 
-          <div className="ss:hidden flex justify-center items-center px-2">
+          <div className="flex justify-center items-center px-2">
 
-            <div className="flex gap-3">
+            <div className="flex gap-3 text-tertiary text-4xl">
               <Link href="/login">
                 <Logo/>
               </Link>
-              <Image width={32} height={32}
+              <IoIosMenu 
+               className="inline-block cursor-pointer lg:hidden "/>
+              {/* <Image width={32} height={32}
                 src="/asset/img/menu.png"
                 alt="Make Up Icon"
-                className="inline-block cursor-pointer lg:hidden bg-white"
-              />
+                className="inline-block cursor-pointer lg:hidden "
+              /> */}
             </div>
 
 

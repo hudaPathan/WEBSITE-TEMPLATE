@@ -2,6 +2,8 @@
 "use client"
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import Hero from '../components/Hero';
+import { link } from 'fs';
 
 
 const page = () => {
@@ -16,16 +18,27 @@ const page = () => {
 
   // Dynamic image source
   const dynamicSrc = `/asset/img/image_${page}.png`;
+  const pictures = [
+    { path: "/asset/img/image2.jpg"},
+    { path: "/asset/img/image1.jpg"},
+    { path: "/asset/img/image1.png"},
+    { path: "/asset/img/image2.png"},
+    { path: "/asset/img/hero.png"},
+    { path: "/asset/img/hero.jpg"},
+    // Add more services as needed
+  ];    
+  
 
   return (
-    <main className='relative flex w-full flex-col justify-center items-center h-full'>
-      <div className="relative flex w-full flex-col justify-center items-center h-96  ">
+    <main className='relative flex w-full flex-col justify-center items-center h-full '>
+      {/* slider */}
+      {/* <div className="relative flex flex-col justify-center items-center h-96">
         <Image 
           src={dynamicSrc}
           width={500}
           height={500}
           alt={`Image${page}`}
-          className='w-full h-full object-cover object-center'
+          className='w-full h-full'
         />
 
         <div className='absolute bottom-20 text-white left-10 py-3 px-8  '>
@@ -56,29 +69,39 @@ const page = () => {
       aria-label="Slide 3"></button>
   </div>
 
-      </div>
+      </div> */}
+      <Hero
+      height={500}
+      isVisible={false}
+      path='/asset/img/collection_bg.png'
+      title='My Collection'
+      />
+     
       
 
 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-3">
-    <div>
-        <Image className="h-auto max-w-full rounded-lg" src="/asset/img/image_1.png" width={500} height={500} alt=""/>
+          {pictures.map((path, index) => (
+       <Image
+       className="grayscale h-auto max-w-full rounded-lg transform transition-transform duration-300 hover:scale-110 hover:grayscale-0" src={path.path} width={500} height={500} alt=""
+       />
+        ))} 
+    </div>
+    {/* <div>
+        <Image className="h-auto max-w-full rounded-lg transform transition-transform duration-300 hover:scale-110 hover:grayscale-0" src="/asset/img/image1.jpg" width={500} height={500} alt=""/>
     </div>
     <div>
-        <Image className="h-auto max-w-full rounded-lg" src="/asset/img/image_2.png" width={500} height={500} alt=""/>
+        <Image className="h-auto max-w-full rounded-lg transform transition-transform duration-300 hover:scale-110 hover:grayscale-0" src="/asset/img/image1.png" width={500} height={500} alt=""/>
     </div>
     <div>
-        <Image className="h-auto max-w-full rounded-lg" src="/asset/img/image_3.png" width={500} height={500} alt=""/>
+        <Image className="h-auto max-w-full rounded-lg transform transition-transform duration-300 hover:scale-110 hover:grayscale-0" src="/asset/img/image2.png" width={500} height={500} alt=""/>
     </div>
     <div>
-        <Image className="h-auto max-w-full rounded-lg" src="/asset/img/image_4.png" width={500} height={500} alt=""/>
+        <Image className="h-auto max-w-full rounded-lg transform transition-transform duration-300 hover:scale-110 hover:grayscale-0" src="/asset/img/hero.png" width={500} height={500} alt=""/>
     </div>
     <div>
-        <Image className="h-auto max-w-full rounded-lg" src="/asset/img/hero.png" width={500} height={500} alt=""/>
+        <Image className="h-auto max-w-full rounded-lg transform transition-transform duration-300 hover:scale-110" src="/asset/img/hero.jpg" width={500} height={500} alt=""/>
     </div>
-    <div>
-        <Image className="h-auto max-w-full rounded-lg" src="/asset/img/product-01.jpg" width={500} height={500} alt=""/>
-    </div>
-   </div>
+   </div> */}
    
 
       

@@ -11,7 +11,7 @@ export const page = () => {
         </Link> */}
         <div className=" grid grid-cols-2 gap-3" >      
           <div className="relative lg:max-w-md">
-                    <Image src="/asset/img/login2.png" alt="aboutimage" height={500} width={500} 
+                    <Image src="/asset/img/login.png" alt="aboutimage" height={500} width={500} 
                         className="relative z-10 object-cover w-full rounded h-96"/></div>
 
 <div className="p-6 space-y-4 md:space-y-6 sm:p-8 bg-quaternary">

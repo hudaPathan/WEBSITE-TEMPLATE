@@ -2,40 +2,39 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { TeamMembers } from '../components/TeamMembers'
+import { link } from 'fs'
+import Hero from '../components/Hero'
+
+
 
 export const page = () => {
-  return (
-<section    className="bg-white dark:bg-gray-900">
-  <div    className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
-      <div    className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-          <h2    className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Our Team</h2>
-          <p    className="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Meet our stylist </p>
-      </div> 
-      <div    className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-        
-          <TeamMembers
-          name='Bonnie Green'
-          description='Bonnie drives the technical strategy of the flowbite platform and brand'
-          design='CEO & Web Developer'
-          />
 
-<TeamMembers
-          name='Bonnie Green'
-          description='Bonnie drives the technical strategy of the flowbite platform and brand'
-          design='CEO & Web Developer'
-          />
-           <TeamMembers
-          name='Bonnie Green'
-          description='Bonnie drives the technical strategy of the flowbite platform and brand'
-          design='CEO & Web Developer'
-          />
-           <TeamMembers
-          name='Bonnie Green'
-          description='Bonnie drives the technical strategy of the flowbite platform and brand'
-          design='CEO & Web Developer'
-          />
+  const team = [
+    {member:'Bonnie Green', des:'Bonnie drives the technical strategy of the flowbite platform and brand',designation:'CEO & Web Developer'},
+    {member:'Bonnie Green', des:'Bonnie drives the technical strategy of the flowbite platform and brand',designation:'CEO & Web Developer'},
+    {member:'Bonnie Green', des:'Bonnie drives the technical strategy of the flowbite platform and brand',designation:'CEO & Web Developer'},
+    {member:'Bonnie Green', des:'Bonnie drives the technical strategy of the flowbite platform and brand',designation:'CEO & Web Developer'},
+
+  ]
+  return (
+    <div>
+      <Hero
+      height={450}
+      isVisible={false}
+      title='Our Team'
+      path='/asset/img/bg.png'
+      description='Meet our Stylist'
+      />
+<section    className=" dark:bg-gray-900 py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+     
+      <div    className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
+      {team.map((team, index) => (
+          <TeamMembers key={index} name={team.member} design={team.designation} description={team.des} />
+        ))} 
+        
+        
       </div>  
-  </div>
-</section>  )
+</section> 
+</div> )
 }
 export default page
