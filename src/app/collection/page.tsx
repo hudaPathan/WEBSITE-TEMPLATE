@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import Hero from '../components/Hero';
-import { link } from 'fs';
 
 
 const page = () => {
@@ -72,7 +71,7 @@ const page = () => {
       </div> */}
       <Hero
       height={500}
-      isVisible={false}
+      isVisible={true}
       path='/asset/img/collection_bg.png'
       title='My Collection'
       />

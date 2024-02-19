@@ -1,4 +1,5 @@
 
+
 export const NAV_LINKS =[
     {href: '/', key:'home', label:'Home'},
     {href: '/about', key:'about', label:'About'},
@@ -6,6 +7,8 @@ export const NAV_LINKS =[
     {href: '/team', key:'team', label:'Team'},
     {href: '/collection', key:'login', label:'Collection'},
     {href: '/contact', key:'contact', label:'Contact'},
+    {href: '/career', key:'career', label:'Jobs'},
+
 ]
 
 export const FOOTER_LINKS =[

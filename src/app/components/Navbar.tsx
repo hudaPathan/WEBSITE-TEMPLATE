@@ -1,14 +1,19 @@
 "use client"
 import Link from "next/link"
 import Image from "next/image"
-import { NAV_LINKS } from "../constants"
 import Button from "./Button"
 import React, { useState } from 'react';
 import { IoIosMenu } from "react-icons/io";
+import { NAV_LINKS } from "../constants";
 
 
 
 const Navbar = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
   
   const Logo = () => {
     const [isHovering, setIsHovered] = useState(false);
@@ -62,23 +67,48 @@ const Navbar = () => {
           <div className="flex justify-center items-center px-2">
 
             <div className="flex gap-3 text-tertiary text-4xl">
-              <Link href="/login">
-                <Logo/>
-              </Link>
-              <IoIosMenu 
+                {/* <Logo/> */}
+                <Link href='/login'>
+                <Button
+                title="Login"
+                />
+                </Link>
+               
+              <IoIosMenu onClick={toggleSidebar}
+
                className="inline-block cursor-pointer lg:hidden "/>
-              {/* <Image width={32} height={32}
-                src="/asset/img/menu.png"
-                alt="Make Up Icon"
-                className="inline-block cursor-pointer lg:hidden "
-              /> */}
+            
             </div>
 
 
           </div>
         </div>
       </div>
-
+      {/* Sidebar */}
+      {isSidebarOpen && (
+        <div className="lg:hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-50">
+          <div className="flex justify-end p-4">
+            {/* Close button */}
+            <IoIosMenu
+              className="text-white cursor-pointer"
+              onClick={toggleSidebar}
+            />
+          </div>
+          <div className="flex flex-col items-center">
+            {/* Sidebar items */}
+            {NAV_LINKS.map((link) => (
+              <Link
+                className=" hover:bg-tertiary hover:text-primary rounded-md px-3 py-2 text-sm font-medium regular-16 text-white flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold"
+                href={link.href}
+                key={link.key}
+                onClick={toggleSidebar} // Close the sidebar on item click
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </nav>
   )
 }

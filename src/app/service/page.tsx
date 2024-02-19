@@ -1,22 +1,39 @@
-
-import Image from "next/image"
-import Link from "next/link"
-import Button from "../components/Button"
 import Service from "../components/Service"
 import Hero from "../components/Hero"
 import { THREADING, WAXING } from "../constants"
 
 
+const getServices= async()=> {
+  let response= await fetch("http://localhost:3000/api/services", {cache:"no-store"})
+  if (!response.ok){
+    throw new Error(`HTTP error! Status: ${response.status}`);
+    return {res:"Error"}
+  }
+  else{
+    let data= await response.json()
+    return data
+  }
+  
+}
+
+const page =async () => {
 
 
-const page = () => {
+  const servicesApi= await getServices()
+  console.log(servicesApi)
+
+  
+ 
   const services = [
-    { path: "/asset/img/service1.png", title: THREADING.title, details: THREADING.details },
-    { path: "/asset/img/service2.png", title: WAXING.title, details: WAXING.details },
-    { path: "/asset/img/service3.png", title: "SUGAR EPILATION", details: THREADING.details },
-    { path: "/asset/img/service4.png", title: "FACIAL", details: THREADING.details },
-    { path: "/asset/img/service5.png", title: "MANICURE", details: THREADING.details },
-    { path: "/asset/img/service6.png", title: "PEDICURE", details: THREADING.details },
+    { path: "/asset/img/service1.png", title: THREADING.title, details: servicesApi.result.filter((item: {category:string})=> item.category=== 'Threading').map((item: {category:string})=> item) },
+    { path: "/asset/img/service10.png", title: WAXING.title, details:servicesApi.result.filter((item: {category:string})=> item.category=== 'Waxing').map((item: {category:string})=> item)  },
+    { path: "/asset/img/service3.png", title: "SUGAR EPILATION", details: servicesApi.result.filter((item: {category:string})=> item.category=== 'Sugar Epilation').map((item: {category:string})=> item) },
+    { path: "/asset/img/service9.png", title: "FACIAL", details: servicesApi.result.filter((item: {category:string})=> item.category=== 'Facial').map((item: {category:string})=> item) },
+    { path: "/asset/img/service5.png", title: "MANICURE", details: servicesApi.result.filter((item: {category:string})=> item.category=== 'Manicure').map((item: {category:string})=> item)},
+    { path: "/asset/img/service6.png", title: "PEDICURE", details: servicesApi.result.filter((item: {category:string})=> item.category=== 'Pedicure').map((item: {category:string})=> item) },
+    { path: "/asset/img/service8.png", title: "MASSAGE", details: servicesApi.result.filter((item: {category:string})=> item.category=== 'Massage').map((item: {category:string})=> item) },
+
+
     // Add more services as needed
   ];
   
@@ -27,17 +44,18 @@ const page = () => {
       <Hero
       path="/asset/img/hero_service.png"
       height={500}
-      isVisible={false}
+      isVisible={true}
       title="Services we Offer"
       description="We provide best and comprehensive beauty services"
       />
-    <div className="bg-white mx-auto px-12 grid w-full grid-cols-1 gap-10 pt-12 sm:w-3/4 lg:w-full lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-1 xl:gap-10">
+    <div className="bg-white mx-auto px-12 grid w-full grid-cols-1 gap-10 pt-12 sm:w-3/4 lg:w-full lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-1 xl:gap-10">
+    
     {services.map((service, index) => (
           <Service key={index} path={service.path} title={service.title} details={service.details} />
         ))}   
-
-
+        
     </div>
+ 
     </main>
   )
 }

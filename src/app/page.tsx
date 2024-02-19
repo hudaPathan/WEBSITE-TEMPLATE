@@ -2,22 +2,38 @@ import Image from 'next/image'
 import Link from 'next/link';
 import Script from 'next/script';
 import Hero from './components/Hero';
-import About1 from './components/About1';
 import Button from './components/Button';
-function Home() {
-  const background_color = '#f4decb';
+import { ConnectionString } from "@/libs/mongodb";
+import mongoose from "mongoose";
 
+async function connectToDatabase(){
+  try{
+      if (mongoose.connection.readyState === 0) {
+          await mongoose.connect(ConnectionString);
+        }
+        return true
 
-  const handleClick = () => {
-    console.log('Button clicked!');
-  };
+  }
+  catch (error){
+      return false
+  }
 
-
+}
+async function isConnectedDb() {
+  const isConnected = await connectToDatabase();
+  
+  if (isConnected) {
+      console.log('Connected to the database!');
+      // Your code here
+  } else {
+      console.log('Failed to connect to the database.');
+  }
+}
+export const page = async () => {
+  isConnectedDb()
   return (
-    <main className="relative cursor-default w-full h-full" >
+    <div className="relative cursor-default w-full h-full" >
       <div>
-        <Script src="/asset/js/main.js" />
-
         <div>
 
           <Hero
@@ -29,39 +45,7 @@ function Home() {
           most likely to fit your needs. We examine annual percentage rates,
           annual fees.'
           />
-          {/* About on Home Page */}
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 '>
-            {/* Grid 1 */}
-            <div className='bg-white p-28 col-span-1'>
-              <h1 className='items-center font-mono ss:text-[68px] text-[52px] ss:leading-[100.8px] leading-[75px] w-full text-center  text-tertiary'>About Me</h1>
-              <div className="line-container w-full mt-5" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <div className="line bg-tertiary" style={{ height: 2, width: '40%' }}>
-
-                </div>
-              </div>
-            </div>
-             {/* Grid 2 */}
-            <div className='col-span-1'>
-              <Image src='/asset/img/Fatma.png' height={500} width={500} alt='' />
-            </div>
-             {/* Grid 3 */}
-            <div className='p-10 col-span-1 items-center justify-center text-center'>
-              <h2 className="mt-2 text-3xl  text-white md:text-5xl  dark:text-gray-300 ">
-                Fatma Rahman
-              </h2>
-              <div className="line-container w-full mt-5" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <div className="line bg-tertiary" style={{ height: 2, width: '40%' }}>
-
-                </div>
-              </div>
-              <p className="m-2 text-base leading-7 text-white dark:text-gray-400 text-justify p-5 mx-5">
-                Fanash Beauty is the brainchild of the talented and dedicated owner, Fatma Rahman. Her qualifications include iTec and QQI certifications, along with specialization in Dermalogica skin care from Ireland.
-
-                Fatma also holds a diploma in  fine arts.                 </p>
-              <Button
-                title='Learn More'
-              /></div>
-          </div>
+        
           <h3
             className="pt-8 pb-8 text-lg uppercase sm:text-4xl lg:text-4xl text-tertiary text-center"
 
@@ -360,10 +344,9 @@ function Home() {
 
 
 
-    </main>
-
-
+    </div>
 
   )
 }
-export default Home
+
+export default page

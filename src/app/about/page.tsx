@@ -9,8 +9,9 @@ export const page = () => {
         <Hero
         path='/asset/img/hero_about.png'
         height={450}
-        isVisible={false}
+        isVisible={true}
         title='About the author'
+        
         />
     <div className='flex items-center  dark:bg-gray-800'>        
         <div className='justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-6'>

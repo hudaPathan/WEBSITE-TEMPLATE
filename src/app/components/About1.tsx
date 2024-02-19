@@ -8,11 +8,11 @@ export const About1 = () => {
                 {/* Author's Picture */}
                 <div className="relative lg:max-w-md">
 
-                    <Image  src="/asset/img/fatma.jpg" alt="aboutimage" height={500} width={500} 
+                    <Image  src="/asset/img/fatma.png" alt="aboutimage" height={500} width={500} 
                         className="relative z-10 object-cover w-full rounded h-96 border-2 border-tertiary"/>
-                    <div
-                        className="absolute bottom-0 right-0 z-10 p-8 bg-white border-4 border-secondary rounded shadow dark:border-blue-400 lg:-mb-8 lg:-mr-11 sm:p-8 dark:text-gray-300 dark:bg-gray-800 ">
-                        <p className="text-lg font-semibold md:w-72">
+                    {/* <div
+                        className="absolute mt-11 bottom-0 right-0 z-10 p-8 bg-white border-4 border-secondary rounded shadow dark:border-blue-400 lg:-mb-20 lg:-mr-11 sm:p-8 dark:text-gray-300 dark:bg-gray-800 ">
+                        <p className="text-lg font-semibold md:w-72 ">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                 className="absolute top-0 left-0 w-16 h-16 text-red-400 dark:text-gray-300 opacity-10"
                                 viewBox="0 0 16 16">
@@ -21,7 +21,7 @@ export const About1 = () => {
                                 </path>
                             </svg> Successfully Providing business solutions from 25 years
                         </p>
-                    </div>
+                    </div> */}
                 </div>
             </div>
     <div className="w-full px-6 mb-10 lg:w-1/2 lg:mb-0 ">

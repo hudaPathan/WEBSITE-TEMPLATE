@@ -2,9 +2,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { FOOTER_CONTACT_INFO, FOOTER_LINKS, SOCIALS } from '../constants'
-import page from '../about/page'
+// import page from '../app/about/page'
 import { pages } from 'next/dist/build/templates/app-page'
 import Button from './Button'
+import { FaFacebook } from "react-icons/fa";
+
 
 const Footer = () => {
   return (
@@ -54,12 +56,12 @@ const Footer = () => {
               {/* Social Icons */}
             <div className="flex flex-col mr-4">
               <FooterColumn title={SOCIALS.title}>
-                <ul className="regular-14  text-gray-30">
+                <ul className="text-sm text-gray-30">
                   {SOCIALS.links.map((link) => (
                     <Link href="/"> 
-                     <div className="flex items-center mb-5">
-                    <Image className='mb-2'src={link.src} alt="logo" width={24} height={24} /> 
-                    <span className="ml-1 mb-2 text-gray-600">{link.label}</span>
+                     <div className="flex items-center mb-2">
+                    <Image className=''src={link.src} alt="logo" width={15} height={15} /> 
+                    <span className="ml-1  text-gray-600">{link.label}</span>
                     </div>
                     </Link>
                   ))}
