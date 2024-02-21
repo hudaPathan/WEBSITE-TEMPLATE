@@ -1,6 +1,8 @@
 "use client"
 import React, { useState } from 'react'
 import Button from '../../components/Button';
+import AdminNavBar from '../../components/AdminNavBar';
+
 
 const page = () => {
     const [name, setName]=useState("");
@@ -22,12 +24,16 @@ const page = () => {
   
     }
   return (
-    <div className='flex flex-col items-center justify-center w-full'>
-                    <h3 className="mb-3 block text-base font-medium text-tertiary"> Add Service </h3>
+    <div className='flex flex-col w-full'>
+      <AdminNavBar/>
+      <div className='flex flex-col items-center justify-center w-full m-4'>
+
+     
+          <h3 className="mb-3 block text-base font-medium text-tertiary"> Add Service </h3>
 
          <form  action="" method="POST">
       
-        <div className="w-full px-3 sm:w-1/2 lg:w-96">
+        <div className="w-full px-3 lg:w-96">
           <div className="mb-5">
 
             <input type="text" name="name" id="name" value={name} placeholder='Service Name' onChange={(e)=> setName(e.target.value)}
@@ -35,7 +41,7 @@ const page = () => {
             />
           </div>
         </div>
-        <div className="w-full px-3 sm:w-1/2 lg:w-96">
+        <div className="w-full px-3  lg:w-96">
           <div className="mb-5">
 
             <input type="text" name="price" id="price" value={price} placeholder='Price' onChange={(e)=> setPrice(e.target.value)}
@@ -43,7 +49,7 @@ const page = () => {
             />
           </div>
         </div>
-        <div className="w-full px-3 sm:w-1/2 lg:w-96">
+        <div className="w-full px-3  lg:w-96">
           <div className="mb-5">
 
             <input type="text" name="category" id="category" value={category} placeholder='Category' onChange={(e)=> setCategory(e.target.value)}
@@ -69,6 +75,7 @@ const page = () => {
                
       </div>
     </form>
+    </div>
       
     </div>
   )

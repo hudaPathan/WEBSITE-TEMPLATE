@@ -12,7 +12,7 @@ async function connectToDatabase() {
   }
 
  
-  export async function GET(ab:string) {
+  export async function GET(ab:any) {
     let success=true;
 
     try {
@@ -20,7 +20,7 @@ async function connectToDatabase() {
 
         // Check the current state of the mongoose connection
         connectToDatabase()
-        const data = await User.findOne({email:ab});
+        const data = await User.findOne({email:'pathanhuda80@gmail.com'});
         console.log(data)
         return NextResponse.json({result:data, success });
 

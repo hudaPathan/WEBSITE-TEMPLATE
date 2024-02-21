@@ -59,12 +59,12 @@ const Hero = ({ path, height, isVisible, title, description }: HeroProps) => {
             {isVisible && (
               <div className="flex gap-3 items-center">
                 <div className="hidden group-hover:block">
-                  <Link href='\booking'>
+                  <Link href='\booking2'>
                     <Button title="Book Your Slot" icon="/asset/img/calendar-clicked.png" />
                   </Link>
                 </div>
                 <div className="block group-hover:hidden">
-                  <Link href='\booking'>
+                  <Link href='\booking2'>
                     <Button title="Book Your Slot" icon="/asset/img/calendar.png" />
                   </Link>
                 </div>

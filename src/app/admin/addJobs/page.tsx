@@ -1,6 +1,8 @@
 "use client"
 import React, { useState } from 'react'
 import Button from '../../components/Button';
+import AdminNavBar from '../../components/AdminNavBar';
+
 
 const page = () => {
     const [name, setName]=useState("");
@@ -22,6 +24,8 @@ const page = () => {
   
     }
   return (
+    <div className='flex flex-col w-full'>
+    <AdminNavBar/>
     <div className='flex flex-col items-center justify-center w-full'>
                     <h3 className="mb-3 block text-base font-medium text-tertiary"> Add Service </h3>
 
@@ -68,6 +72,8 @@ const page = () => {
     </form>
       
     </div>
+    </div>
+
   )
 }
 

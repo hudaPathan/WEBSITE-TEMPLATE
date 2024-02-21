@@ -19,17 +19,7 @@ export const page = async () => {
 
   const serviceApi= await getJobs()
    console.log(serviceApi)
-   const teams=[
-    {details:serviceApi.result.map((item: {name:string, description:string, design:string})=> item)}
-    // design:serviceApi.result.map((item: {design:string})=> item.design),
-    // description:serviceApi.result.map((item: {description:string})=> item.description)}
-]
-const team = [
-  { name: 'Bonnie Green', description: 'Bonnie drives the technical strategy of the flowbite platform and brand', design: 'CEO & Web Developer' },
-  { name: 'Bonnie Green', description: 'Bonnie drives the technical strategy of the flowbite platform and brand', design: 'CEO & Web Developer' },
-  { name: 'Bonnie Green', description: 'Bonnie drives the technical strategy of the flowbite platform and brand', design: 'CEO & Web Developer' },
-  { name: 'Bonnie Green', description: 'Bonnie drives the technical strategy of the flowbite platform and brand', design: 'CEO & Web Developer' },
-];
+  
 
 
   return (
@@ -46,24 +36,15 @@ const team = [
 
          
 
-            {teams.map((teamMembers, index) => (
+            {serviceApi.result.map((item: {name:string, design:string, description:string}) => (
             <TeamMembers
-              key={index}
-              name={teamMembers.details.name}
-              design={teamMembers.details.description}
-              description={teamMembers.details.design}
+              name={item.name}
+              design={item.design}
+              description={item.description}
             />
           ))}
 
-          
-{team.map((teamMembers, index) => (
-            <TeamMembers
-              key={index}
-              name={teamMembers.name}
-              design={teamMembers.design}
-              description={teamMembers.description}
-            />
-          ))}
+        
 
         
         </div>

@@ -2,6 +2,8 @@ import Image from 'next/image'
 import Button from '../components/Button'
 import About1 from '../components/About1'
 import Hero from '../components/Hero'
+import Faq from "../components/Faq";
+
 export const page = () => {
   return (
     
@@ -20,7 +22,7 @@ export const page = () => {
           
         <About1/>
 
-            <section className="flex items-center mt-10 border-4 border-tertiary bg-stone-50 xl:h-screen font-poppins dark:bg-gray-800 ">
+            {/* <section className="flex items-center mt-10 border-4 border-tertiary bg-stone-50 xl:h-screen font-poppins dark:bg-gray-800 ">
         <div className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
             <div className="flex flex-wrap items-center ">
                 <div className="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
@@ -101,7 +103,12 @@ export const page = () => {
                 </div>
             </div>
         </div>
-    </section>
+    </section> */}
+    <div className='w-full mt-2'>
+    <Faq/>
+
+    </div>
+    
         </div>
     </div>
 </div>

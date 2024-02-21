@@ -10,6 +10,12 @@ export const NAV_LINKS =[
     {href: '/career', key:'career', label:'Jobs'},
 
 ]
+export const LINKS =[
+  {href: '/', key:'home', label:'Home'},
+  {href: '/admin/addService', key:'service', label:'Add Service'},
+  {href: '/admin/addJobs', key:'jobs', label:'Add Jobs'},
+  {href: '/admin/addTeam', key:'team', label:'Add Team'},
+]
 
 export const FOOTER_LINKS =[
   {href: '/', key:'home', label:'Home'},

@@ -1,6 +1,8 @@
 "use client"
 import Button from '../../components/Button';
 import {useState} from 'react'
+import AdminNavBar from '../../components/AdminNavBar';
+
 const page = () => {
     const [name, setName]=useState("");
     const [design, setDesign]=useState("");
@@ -21,13 +23,15 @@ const page = () => {
     
       }
   return (
+    <div className='flex flex-col w-full'>
+      <AdminNavBar/>
     
-    <div className='flex flex-col items-center justify-center w-full'>
+    <div className='flex flex-col items-center justify-center w-full m-4'>
     <h3 className="mb-3 block text-base font-medium text-tertiary"> Add Team Member </h3>
 
 <form  action="" method="POST">
 
-<div className="w-full px-3 sm:w-1/2 lg:w-96">
+<div className="w-full px-3 lg:w-96">
 <div className="mb-5">
 
 <input type="text" name="name" id="name" value={name} placeholder='Full Name' onChange={(e)=> setName(e.target.value)}
@@ -35,7 +39,7 @@ className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-bas
 />
 </div>
 </div>
-<div className="w-full px-3 sm:w-1/2 lg:w-96">
+<div className="w-full px-3 lg:w-96">
 <div className="mb-5">
 
 <input type="text" name="design" id="design" value={design} placeholder='Designation' onChange={(e)=> setDesign(e.target.value)}
@@ -43,7 +47,7 @@ className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-bas
 />
 </div>
 </div>
-<div className="w-full px-3 sm:w-1/2 lg:w-96">
+<div className="w-full px-3  lg:w-96">
 <div className="mb-5">
 
 <input type="text" name="description" id="description" value={description} placeholder='Describe in few words' onChange={(e)=> setDescription(e.target.value)}
@@ -65,6 +69,7 @@ title='Add Member'
 </div>
 </form>
 
+</div>
 </div>
   )
 }

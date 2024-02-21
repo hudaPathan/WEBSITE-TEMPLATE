@@ -12,7 +12,7 @@ const Button = ({title, icon, action}:ButtonProps) => {
   return (
     <div>
 
-      <button type="button" className="text-white font-mono  w-fit  bg-tertiary hover:bg-primary hover:text-secondary focus:ring-4 focus:outline-none focus:ring-red-300 font-medium  text-sm px-5 py-2.5 text-center inline-flex gap-3 items-center"
+      <button type="button" className="text-white font-mono  w-fit  bg-tertiary hover:bg-primary hover:text-secondary focus:ring-4 focus:outline-none focus:ring-gray-500 font-medium  text-sm px-5 py-2.5 text-center inline-flex gap-3 items-center"
       onClick={action}
     >
 

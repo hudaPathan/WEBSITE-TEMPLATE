@@ -9,6 +9,7 @@ const page= () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [service, setService] = useState("");
+  const [service1, setService1] = useState("");
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
@@ -18,9 +19,6 @@ const page= () => {
   const [clickedValues, setClickedValues] = useState<string[]>([]);
 
   
-
-
-
   const handleItemClick = (itemName: string, itemCategory:string) => {
     setClickedItem(prevItem => (prevItem === itemName ? prevItem : itemName));
     setClickedValues(prevValues => [...prevValues, itemName]);
@@ -120,6 +118,7 @@ const page= () => {
     <div className="mx-auto w-full h-full">
       <form action="" method="POST">
       
+        {/* Date */}
         <div className="mb-5">
           <div className="w-full px-3 sm:w-1/2">
             <div className="mb-5">
@@ -133,7 +132,7 @@ const page= () => {
 
          
         </div>
-  
+  {/* Time */}
         <div className="mb-5 pt-3">
           <label
             className="mb-5 block text-base font-semibold text-tertiary sm:text-xl"
@@ -149,7 +148,8 @@ const page= () => {
   </select>
   </div>
         
-        <div className="mb-5">
+        <div className="mb-5 flex">
+          {/* Service Type */}
           <div className='w-full px-3 sm:w-1/2'>
           
           <div className='mb-5 pt-3'><label
@@ -165,10 +165,32 @@ const page= () => {
         ))}   
     
   </select></div>
+  
   </div>
- 
+  {/* Service */}
+  <div className='w-full px-3 sm:w-1/2'>
+          
+          <div className='mb-5 pt-3'><label
+            className="mb-5 block text-base font-semibold text-tertiary sm:text-xl"
+          >
+            Service Type
+          </label>
+          <select value={service1} onChange={(e)=> setService1(e.target.value)} className="dropdown w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+    <option className="m-1 btn btn-outline btn-secondary">Choose..</option>
+    
+    
+         {servicesApi?.result.filter((item: {category:string})=> item.category===service).map((item: {category:string, name:string, price:string})=>
+             (<option> {item.name}</option>)
 
-<div className='w-full px-3'>
+                )}
+    
+  </select></div>
+  
+  </div>
+  </div>
+
+
+{/* <div className='w-full px-3'>
               <div className='mb-5 pt-3'>
                 <label className="mb-5 block text-base font-semibold text-tertiary sm:text-xl">
                   Select Services
@@ -207,23 +229,11 @@ const page= () => {
           ))}
         </div>
       </div>
-                {/* {servicesApi?.result.map((service: { name: string, price: string }) => (
-                  <div key={service.name} className="mb-2">
-                    <input
-                      type="checkbox"
-                      id={service.name}
-                      value={service.name}
-                      checked={selectedServices.includes(service.name)}
-                      onChange={() => handleServiceToggle(service.name)}
-                    />
-                    <label htmlFor={service.name} className="ml-2">{service.name + " - €" + service.price}</label>
-                  </div>
-                ))} */}
+                
               </div>
-            </div>
+            </div> */}
 
         
-  </div>
   
   <div className="mb-5">
   <label
@@ -278,3 +288,21 @@ const page= () => {
 }
 
 export default page
+
+
+
+
+{/* 
+checkbox for each service
+{servicesApi?.result.map((service: { name: string, price: string }) => (
+                  <div key={service.name} className="mb-2">
+                    <input
+                      type="checkbox"
+                      id={service.name}
+                      value={service.name}
+                      checked={selectedServices.includes(service.name)}
+                      onChange={() => handleServiceToggle(service.name)}
+                    />
+                    <label htmlFor={service.name} className="ml-2">{service.name + " - €" + service.price}</label>
+                  </div>
+                ))} */}

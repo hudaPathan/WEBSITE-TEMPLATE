@@ -18,10 +18,6 @@ const getJobs= async()=> {
 const page = async() => {
   const serviceApi= await getJobs()
   console.log(serviceApi)
-
-    const openings=[
-        {title:serviceApi.result.map((item: {category:string})=> item.category), position:serviceApi.result.map((item: {design:string})=> item.design), type:serviceApi.result.map((item: {type:string})=> item.type)}
-    ]
    
   return (
     <div className='items-center'>  
@@ -32,17 +28,17 @@ const page = async() => {
         title='Featured Job'
 
         />
-        {openings.map((job) => (
+        {serviceApi.result.map((item: {category:string,design:string,type:string}) => (
                <div id='openings' className='container p-5 m-5 md:m-5 bg-white border rounded-xl md:w-[90%] mx-auto'>
                <div className='flex flex-col md:flex-row justify-between items-center -m-2'>
                  <div className='md:mr-5 mb-5 md:mb-0'>
                    <h3 className='inline-block px-2.5 py-1 text-xs text-white font-medium bg-tertiary uppercase rounded-md mb-2 md:mb-4'>
-                     {job.title}
+                     {item.category}
                    </h3>
                    <h1 className='text-xl text-black font-heading mb-2.5 font-bold leading-snug'>
-                     {job.position}
+                     {item.design}
                    </h1>
-                   <p>{job.type}</p>
+                   <p>{item.type}</p>
                  </div>
                </div>
              </div>
