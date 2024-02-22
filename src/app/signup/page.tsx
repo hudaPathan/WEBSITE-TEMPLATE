@@ -37,9 +37,7 @@ const page = () => {
         method: "POST",
         body: JSON.stringify(data)
       });
-      if (result.ok)
-      {
-      }
+     
     }
   };
 

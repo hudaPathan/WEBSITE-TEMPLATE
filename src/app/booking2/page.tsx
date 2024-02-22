@@ -17,6 +17,8 @@ const page= () => {
   const [bookingApi, setBookingApi] = useState<{ result: any[] } | null>(null);
   const [clickedItem, setClickedItem] = useState<string | null>(null);
   const [clickedValues, setClickedValues] = useState<string[]>([]);
+  const [error, setError] = useState<string>('');
+
 
   
   const handleItemClick = (itemName: string, itemCategory:string) => {
@@ -79,14 +81,34 @@ const page= () => {
       email: email,
       contact: contact,
       seriviceType: selectedServices
-    };
-    // console.log(date,time,service,email,contact)
-    const result = await fetch("http://localhost:3000/api/bookings", {
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const contactNumberRegex = /^\d{10}$/;
+
+   if (emailRegex.test(email)) {
+      console.log("Email Id Error "+ {email})
+
+      setError(`${email} Invalid Email`);
+    } 
+    else if (contactNumberRegex.test(contact)) {
+       setError(`${contact} Invalid Contact details`);
+     }   
+     else if  (!date || !email || !time || !service || contact || selectedServices) {
+      console.log("Blank Fields")
+      setError('All fields are necessary');
+    } 
+     else{
+      console.log(contact,email,date,time,service,selectedServices)
+      const result = await fetch("http://localhost:3000/api/bookings", {
       method: "POST",
       body: JSON.stringify(data)
     });
+     
+    }    
+   
 
   }
+
 
   const services = servicesApi ? [
     {  title: "Threading", details: servicesApi.result.filter((item: {category:string})=> item.category=== 'Threading').map((item: {category:string, name:string})=> item) },
@@ -243,12 +265,14 @@ const page= () => {
           </label>
 
           <input value={email} onChange={(e)=> setEmail(e.target.value)} 
-                  type="text"
+                  type="email"
                   name="email"
-                  id="area"
+                  id="email"
                   placeholder="Enter email"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                  title='Enter a valid email'
                   className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                />
+                  />
             </div>
             <div className="mb-5">
   <label
@@ -258,10 +282,11 @@ const page= () => {
           </label>
 
           <input value={contact} onChange={(e)=> setContact(e.target.value)} 
-                  type="text"
-                  name="email"
-                  id="area"
-                  placeholder="Enter number"
+                  type="tel"
+                  name="contact"
+                  id="contact"
+                 
+                  title="Enter a 10-digit contact number"
                   className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                 />
             </div>
@@ -271,6 +296,8 @@ const page= () => {
        action={booking}
           title='Proceed to Payment'
           />
+                {error && <p style={{ color: 'red' }}>{error}</p>}
+
                  
         </div>
       </form>
